@@ -1,0 +1,16 @@
+{
+  "name": "stardust-glossary",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Canonical StarDust glossary content, compiled into StarDustDocs and StarDustWebsite.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "compile": "npm run build && node dist/src/compile.js",
+    "validate": "npm run build && node dist/src/compile.js --validate-only"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2",
+    "yaml": "^2.6.1"
+  }
+}
