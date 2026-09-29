@@ -4,6 +4,7 @@ import { dirname, join } from 'node:path';
 import { loadContent } from './parse';
 import { validateContent } from './validate';
 import { renderDocsGlossary } from './renderers/docs';
+import { renderDocsGlossaryData } from './renderers/docs-data';
 import { writeWebsiteGlossaryFile } from './renderers/website';
 
 /**
@@ -80,6 +81,14 @@ function main(): void {
     console.log(`Compiling docs -> ${args.docsPath}`);
     writeFile(join(args.docsPath, 'docs', 'reference', 'glossary.md'), renderDocsGlossary(content, 'en'));
     writeFile(join(args.docsPath, 'docs', 'id', 'reference', 'glossary.md'), renderDocsGlossary(content, 'id'));
+    writeFile(
+      join(args.docsPath, 'docs', '.vitepress', 'theme', 'glossary-data', 'en.json'),
+      renderDocsGlossaryData(content, 'en'),
+    );
+    writeFile(
+      join(args.docsPath, 'docs', '.vitepress', 'theme', 'glossary-data', 'id.json'),
+      renderDocsGlossaryData(content, 'id'),
+    );
   }
 
   if (args.target === 'website' || args.target === 'all') {

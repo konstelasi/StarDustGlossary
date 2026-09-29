@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import type { GlossaryContent, Locale } from '../schema';
 import { indexBySlug, renderWebsiteText } from '../parse';
+import { buildTermsCatalog } from './shared';
 
 interface WebsiteGlossaryCatalog {
   meta: unknown;
@@ -24,15 +25,7 @@ export function renderWebsiteGlossaryFile(content: GlossaryContent, locale: Loca
   const termsBySlug = indexBySlug(content.terms);
 
   existing.orientation = content.orientation[locale].map(paragraph => renderWebsiteText(paragraph, termsBySlug));
-
-  const terms: Record<string, { term: string; short: string }> = {};
-  for (const term of [...content.terms].sort((a, b) => a.slug.localeCompare(b.slug))) {
-    terms[term.slug] = {
-      term: term.term,
-      short: renderWebsiteText(term.short[locale], termsBySlug),
-    };
-  }
-  existing.terms = terms;
+  existing.terms = buildTermsCatalog(content, locale);
 
   return `${JSON.stringify(existing, null, 2)}\n`;
 }
