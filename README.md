@@ -30,7 +30,7 @@ Each site keeps its own presentation chrome independently configured — hero co
 
 `content/orientation.yaml` — the "How the pieces fit" narrative, `en`/`id` arrays of paragraphs using the same `**bold**` / `[[slug]]` conventions.
 
-Both `body` and `orientation` support `**bold**` / `*italic*` emphasis and `[[slug]]` / `[[slug|text]]` cross-references. `short` does not — it's meant to render as plain text everywhere, including a future hover popover.
+Both `body` and `orientation` support `**bold**` / `*italic*` emphasis and `[[slug]]` / `[[slug|text]]` cross-references. `short` does not — it's meant to render as plain text everywhere, including the hover popovers on both sites.
 
 ## Compiling
 
@@ -46,10 +46,7 @@ With no arguments, `npm run compile` writes into `../StarDustDocs` and `../StarD
 ## What each renderer touches
 
 - **Docs** (`src/renderers/docs.ts`): fully rewrites `docs/reference/glossary.md` and `docs/id/reference/glossary.md`. Page chrome (headings, intro copy, the "See also:" label) lives in the renderer itself, not in canonical content.
+- **Docs popover data** (`src/renderers/docs-data.ts`): writes `docs/.vitepress/theme/glossary-data/{en,id}.json`, the per-term catalog (`term`, `short`, `body`, `seeAlso`) that StarDustDocs' `Term.vue` hover popover imports at build time. Pages opt in per term with `<Term id="slug">text</Term>`.
 - **Website** (`src/renderers/website.ts`): reads the existing `messages/{en,id}/glossary.json` and replaces only the `terms` and `orientation` keys — `meta`, `hero`, `orientationHeading`, `termsHeading`, and `popup` are left exactly as the website repo owns them.
 
 Generated output is committed in each consuming repo like any other source file — there is no CI dependency on this repo in either consumer; regenerating is a manual step whenever glossary content changes here.
-
-## Future: the StarDustDocs hover popover
-
-Not built yet. When it is, it needs exactly the data this compiler already produces per term (`term`, `short`, `body`, `seeAlso`) — adding a third renderer that emits that as a data file for a VitePress Vue component is additive, not a schema change.
