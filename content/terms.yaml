@@ -3,8 +3,8 @@
   seeAlso:
     - export-job
   short:
-    en: The file a completed export produces — CSV or JSON, written to the directory you configured.
-    id: File hasil sebuah export — CSV atau JSON — yang ditulis ke direktori yang Anda konfigurasi.
+    en: The file a completed export produces, in CSV or JSON, written to the directory you configured.
+    id: File hasil sebuah export, berformat CSV atau JSON, yang ditulis ke direktori yang Anda konfigurasi.
   body:
     en: The file a completed export produces, CSV or JSON, written to the directory you configured. You serve or move it yourself. The [[chronicler|Chronicler]] deletes it automatically once its TTL expires (24 hours by default), so treat the path as temporary.
     id: File yang dihasilkan oleh ekspor yang sudah selesai, berupa CSV atau JSON, ditulis ke direktori yang Anda konfigurasikan. Anda sendiri yang menyajikan atau memindahkannya. [[chronicler|Chronicler]] menghapusnya secara otomatis setelah TTL-nya habis (24 jam secara bawaan), jadi anggap path-nya sementara.
@@ -26,8 +26,8 @@
     - pre-flight-rejection
     - indexed
   short:
-    en: The interval between a schema operation returning and its background pass finishing — the period during which the change is declared but not yet applied to stored data.
-    id: Rentang waktu antara sebuah operasi skema selesai dijalankan dan proses latar belakangnya benar-benar tuntas — periode ketika perubahan sudah dinyatakan tapi belum sepenuhnya diterapkan ke data yang tersimpan.
+    en: The interval between a schema operation returning and its background pass finishing, during which the change is declared but not yet applied to stored data.
+    id: Rentang waktu antara sebuah operasi skema selesai dijalankan dan proses latar belakangnya benar-benar tuntas, yaitu periode ketika perubahan sudah dinyatakan tapi belum sepenuhnya diterapkan ke data yang tersimpan.
   body:
     en: |-
       The interval between a schema operation returning and its background pass finishing, the period during which the change is *declared* but not yet fully *applied* to stored data. Every asynchronous operation has one: making a field filterable, [[retype|retyping]] it, renaming it, deleting it, and deleting a model.
@@ -95,8 +95,8 @@
     - bounded-read
     - sort
   short:
-    en: The opaque token that marks your position in a paginated read — there is no offset parameter and no total count.
-    id: Token buram yang menandai posisi Anda dalam sebuah read berpaginasi — tidak ada parameter offset dan tidak ada total count.
+    en: The opaque token that marks your position in a paginated read, since there is no offset parameter and no total count.
+    id: Token buram yang menandai posisi Anda dalam sebuah read berpaginasi, karena tidak ada parameter offset dan tidak ada total count.
   body:
     en: "The opaque token that marks your position in a paginated read. You pass the previous page's cursor to get the next one, and the absence of a cursor means you have reached the end. There is deliberately no offset parameter and no total count: both would require the database to read the entire matching set, so a query that is fast today would slow down purely because the tenant grew. Infinite scroll and a Next button work naturally. \"Page 7 of 214\" cannot be served."
     id: 'Token opaque yang menandai posisi Anda dalam pembacaan berhalaman. Anda mengoper cursor dari halaman sebelumnya untuk mendapat halaman berikutnya, dan ketiadaan cursor berarti Anda sudah sampai di akhir. Memang sengaja tidak ada parameter offset dan tidak ada jumlah total: keduanya mengharuskan database membaca seluruh himpunan yang cocok, sehingga query yang cepat hari ini akan melambat hanya karena tenant-nya bertambah besar. Infinite scroll dan tombol Next bekerja dengan wajar. "Halaman 7 dari 214" tidak bisa dilayani.'
@@ -104,8 +104,8 @@
   term: Daemon
   seeAlso: []
   short:
-    en: Background work that keeps filtering caught up, run either as a long-lived process or in bounded bursts from a schedule — StarDust ships four, coordinating only through the database.
-    id: Pekerjaan latar belakang yang membuat penyaringan tetap mengejar ketertinggalan, dijalankan baik sebagai proses yang berjalan terus-menerus maupun dalam putaran singkat terjadwal — StarDust menyediakan empat, yang berkoordinasi hanya lewat database.
+    en: Background work that keeps filtering caught up, run either as a long-lived process or in bounded bursts from a schedule, and StarDust ships four that coordinate only through the database.
+    id: Pekerjaan latar belakang yang membuat penyaringan tetap mengejar ketertinggalan, dijalankan baik sebagai proses yang berjalan terus-menerus maupun dalam putaran singkat terjadwal, dan StarDust menyediakan empat yang berkoordinasi hanya lewat database.
   body:
     en: "A long-lived background process you run alongside your app. StarDust ships four ([[watcher|Watcher]], [[reconciler|Reconciler]], [[liberator|Liberator]], [[chronicler|Chronicler]]), all launched through `bin/stardust`. They never talk to each other directly. The database is the only thing they coordinate through. Capacity replenishment and background work depend on this maintenance running one way or another: if your host cannot keep long-lived processes alive at all, `bin/stardust tick` runs one bounded pass of the Watcher, Liberator and Reconciler from a cron line instead, so the choice is which mode to run, not whether to run one."
     id: "Proses latar belakang yang berjalan lama dan Anda jalankan berdampingan dengan aplikasi. StarDust menyediakan empat ([[watcher|Watcher]], [[reconciler|Reconciler]], [[liberator|Liberator]], [[chronicler|Chronicler]]), semuanya dijalankan lewat `bin/stardust`. Mereka tidak pernah berbicara langsung satu sama lain. Database adalah satu-satunya tempat mereka berkoordinasi. Pengisian kapasitas dan pekerjaan latar belakang bergantung pada pemeliharaan ini berjalan dengan satu cara atau lainnya: jika host Anda sama sekali tidak bisa mempertahankan proses yang hidup lama, `bin/stardust tick` menjalankan satu putaran terbatas dari Watcher, Liberator, dan Reconciler lewat baris cron. Jadi pilihannya adalah mode mana yang dipakai, bukan apakah akan menjalankannya."
@@ -113,8 +113,8 @@
   term: Declared type
   seeAlso: []
   short:
-    en: The type you register a field as — string, int, numeric, or datetime.
-    id: Tipe yang Anda daftarkan untuk sebuah field — string, int, numeric, atau datetime.
+    en: The type you register a field as, which is one of string, int, numeric, or datetime.
+    id: Tipe yang Anda daftarkan untuk sebuah field, yaitu salah satu dari string, int, numeric, atau datetime.
   body:
     en: "The type you register a field as: `string`, `int`, `numeric`, or `datetime`. It decides which family of [[slot|slot]] column the field can occupy and how filter values against it are validated. Changing it later is a [[retype|retype]]."
     id: "Tipe yang Anda daftarkan untuk sebuah field: `string`, `int`, `numeric`, atau `datetime`. Ia menentukan keluarga kolom [[slot|slot]] mana yang bisa ditempati field itu dan bagaimana nilai filter terhadapnya divalidasi. Mengubahnya kemudian disebut [[retype|retype]]."
@@ -254,8 +254,8 @@
     - backfill-window
     - pre-flight-rejection
   short:
-    en: Whether a field's slot is live right now — that is, whether a filter on it would actually work.
-    id: Apakah slot sebuah field sedang aktif saat ini — yaitu, apakah filter terhadapnya benar-benar akan berfungsi.
+    en: Whether a field's slot is live right now, meaning whether a filter on it would actually work.
+    id: Apakah slot sebuah field sedang aktif saat ini, yaitu apakah filter terhadapnya benar-benar akan berfungsi.
   body:
     en: Whether a field's [[slot|slot]] is live *right now*, that is, whether a filter on it would actually work. This is distinct from being declared [[filterable|filterable]], and the two disagree for the whole of a [[backfill-window|backfill window]]. Schema introspection reports both, and gating your UI on this one is what stops it offering a filter the engine would reject.
     id: Apakah [[slot|slot]] sebuah field aktif *saat ini juga*, yaitu apakah filter padanya benar-benar akan berfungsi. Ini berbeda dari dideklarasikan [[filterable|filterable]], dan keduanya tidak sama selama seluruh [[backfill-window|backfill window]]. Introspeksi skema melaporkan keduanya, dan menjadikan yang ini sebagai syarat di UI Anda adalah yang mencegahnya menawarkan filter yang akan ditolak engine.
@@ -277,8 +277,8 @@
     - entry
     - tenant
   short:
-    en: A named data shape within a tenant — the rough equivalent of a table, except you define it at runtime.
-    id: Bentuk data bernama di dalam sebuah tenant — kurang lebih setara tabel, hanya saja Anda mendefinisikannya saat runtime.
+    en: A named data shape within a tenant, the rough equivalent of a table except that you define it at runtime.
+    id: Bentuk data bernama di dalam sebuah tenant, kurang lebih setara tabel, hanya saja Anda mendefinisikannya saat runtime.
   body:
     en: A named data shape within a [[tenant|tenant]], the rough equivalent of a table, except you define it at runtime rather than in a migration. A model owns a set of [[field|fields]], and every [[entry|entry]] belongs to exactly one model. Models can be renamed (instantly, since nothing resolves a model by name) and deleted (in the background, and irreversibly).
     id: Bentuk data bernama di dalam sebuah [[tenant|tenant]], kira-kira setara dengan tabel, bedanya Anda mendefinisikannya saat runtime, bukan lewat migration. Sebuah model memiliki sekumpulan [[field|field]], dan setiap [[entry|entry]] milik tepat satu model. Model bisa diganti namanya (seketika, karena tidak ada yang mencari model lewat nama) dan dihapus (di latar belakang, dan tidak bisa dibatalkan).
@@ -288,8 +288,8 @@
     - system-of-record
     - slot
   short:
-    en: The complete JSON object holding all of an entry's field values — the authoritative system of record.
-    id: Objek JSON lengkap yang menyimpan seluruh nilai field sebuah entry — system of record yang otoritatif.
+    en: The complete JSON object holding all of an entry's field values, which is the authoritative system of record.
+    id: Objek JSON lengkap yang menyimpan seluruh nilai field sebuah entry dan menjadi system of record yang otoritatif.
   body:
     en: The complete JSON object holding all of an [[entry|entry]]'s field values, stored in `entry_data`. Every field is here, filterable or not. The indexed [[slot|slots]] are a *copy* of some of these values, never the original. This is the [[system-of-record|system of record]], which is why a field with no slot is still fully readable and why a failed backfill can never lose data.
     id: Objek JSON lengkap yang memuat semua nilai field sebuah [[entry|entry]], disimpan di `entry_data`. Semua field ada di sini, filterable maupun tidak. [[slot|Slot]] terindeks hanyalah *salinan* dari sebagian nilai ini, tidak pernah aslinya. Inilah [[system-of-record|system of record]], sebab itu field tanpa slot tetap bisa dibaca sepenuhnya dan backfill yang gagal tidak akan pernah menghilangkan data.
@@ -334,8 +334,8 @@
     - dead-letter-queue
     - daemon
   short:
-    en: The daemon that does the catching up — it drains every kind of deferred work the engine produces, in bounded chunks.
-    id: Daemon yang mengejar ketertinggalan — ia mengalirkan semua jenis pekerjaan tertunda yang dihasilkan engine, dalam chunk yang terbatas.
+    en: The daemon that does the catching up, draining every kind of deferred work the engine produces in bounded chunks.
+    id: Daemon yang mengejar ketertinggalan dengan mengalirkan semua jenis pekerjaan tertunda yang dihasilkan engine, dalam chunk yang terbatas.
   body:
     en: The daemon that does the catching up. It drains every kind of deferred work the engine produces (entries queued during an [[exhaustion-fallback|exhaustion fallback]], asynchronous bulk imports, [[promotion|promotion]] and [[retype|retype]] backfills, rename rewrites, and deletion purges) in bounded chunks. Multiple copies can run at once, and they divide the work without stepping on each other. Nearly every [[backfill-window|backfill window]] in this glossary closes because a Reconciler closed it.
     id: Daemon yang mengerjakan proses menyusul. Ia menguras setiap jenis pekerjaan tertunda yang dihasilkan engine (entry yang diantrekan saat [[exhaustion-fallback|exhaustion fallback]], impor bulk asinkron, backfill [[promotion|promotion]] dan [[retype|retype]], penulisan ulang akibat rename, dan pembersihan akibat penghapusan) dalam chunk yang terbatas. Beberapa salinan bisa berjalan bersamaan, dan mereka membagi pekerjaan tanpa saling mengganggu. Hampir setiap [[backfill-window|backfill window]] di glosarium ini tertutup karena sebuah Reconciler yang menutupnya.
@@ -355,8 +355,8 @@
   seeAlso:
     - schema-version
   short:
-    en: The set of tables recording your models, fields, pages, and slot assignments — the engine's own bookkeeping.
-    id: Kumpulan tabel yang mencatat model, field, page, dan slot assignment Anda — pembukuan engine itu sendiri.
+    en: The set of tables recording your models, fields, pages, and slot assignments, which is the engine's own bookkeeping.
+    id: Kumpulan tabel yang mencatat model, field, page, dan slot assignment Anda, yaitu pembukuan engine itu sendiri.
   body:
     en: "The set of `stardust_`-prefixed tables recording your models, fields, pages, and slot assignments. It is the engine's own bookkeeping: you create it once with `bootstrap` and then read it through the introspection API rather than querying it directly. It is also the only channel the [[daemon|daemons]] use to coordinate. There is no message bus and no direct process-to-process communication."
     id: "Kumpulan tabel berawalan `stardust_` yang mencatat model, field, page, dan penetapan slot Anda. Ini adalah pembukuan milik engine sendiri: Anda membuatnya sekali dengan `bootstrap` lalu membacanya lewat API introspeksi, bukan meng-query-nya langsung. Ia juga satu-satunya saluran koordinasi antar [[daemon|daemon]]. Tidak ada message bus dan tidak ada komunikasi langsung antar proses."
@@ -376,8 +376,8 @@
     - filter-tree
     - pre-flight-rejection
   short:
-    en: The swappable component that actually executes a filtered read — MySQL by default, or your own to delegate to an external search service.
-    id: Komponen yang dapat ditukar, yang benar-benar menjalankan sebuah read terfilter — MySQL secara default, atau milik Anda sendiri untuk mendelegasikan ke layanan pencarian eksternal.
+    en: The swappable component that actually executes a filtered read, which defaults to MySQL and can be your own to delegate to an external search service.
+    id: Komponen yang dapat ditukar, yang benar-benar menjalankan sebuah read terfilter, secara default MySQL atau milik Anda sendiri untuk mendelegasikan ke layanan pencarian eksternal.
   body:
     en: The swappable component that actually executes a filtered read. The default runs native MySQL against the indexed [[slot|slots]]. You can inject your own to delegate to an external search service instead. Drivers are read-only, since writes always go to MySQL, and each one declares its own capabilities, so if you ask for something the active driver cannot do, you get a typed rejection rather than a wrong answer.
     id: Komponen yang bisa diganti yang benar-benar menjalankan pembacaan terfilter. Bawaannya menjalankan MySQL native terhadap [[slot|slot]] terindeks. Anda bisa menyuntikkan milik Anda sendiri untuk mendelegasikan ke layanan pencarian eksternal. Driver bersifat read-only, karena penulisan selalu menuju MySQL, dan masing-masing mendeklarasikan kapabilitasnya sendiri, sehingga bila Anda meminta sesuatu yang tidak sanggup dilakukan driver aktif, Anda mendapat penolakan bertipe, bukan jawaban yang salah.
@@ -416,8 +416,8 @@
     - cursor
     - indexed
   short:
-    en: The ordering of a read — by entry ID, creation time, or a single indexed field.
-    id: Urutan sebuah read — berdasarkan entry ID, waktu pembuatan, atau satu field yang indexed.
+    en: The ordering of a read, which is by entry ID, creation time, or a single indexed field.
+    id: Urutan sebuah read, yaitu berdasarkan entry ID, waktu pembuatan, atau satu field yang indexed.
   body:
     en: "The ordering of a read. You may sort by one key: entry ID, creation time, or a single [[indexed|indexed]] field. The first two walk an existing index and stay cheap at any page depth. Sorting by a field costs a full sort pass over the matching set on every page, which is still bounded but not free. Sorting by two fields at once is not supported. A field must be indexed to be sortable, for the same reason it must be indexed to be filtered."
     id: "Urutan hasil sebuah pembacaan. Anda boleh mengurutkan berdasarkan satu key: ID entry, waktu pembuatan, atau satu field yang [[indexed|indexed]]. Dua yang pertama menyusuri index yang sudah ada dan tetap murah pada kedalaman halaman berapa pun. Mengurutkan berdasarkan field membutuhkan satu putaran pengurutan penuh atas himpunan yang cocok di setiap halaman, yang tetap terbatas tetapi tidak gratis. Mengurutkan berdasarkan dua field sekaligus tidak didukung. Sebuah field harus indexed agar bisa diurutkan, dengan alasan yang sama seperti ia harus indexed untuk difilter."
@@ -456,8 +456,8 @@
     - payload
     - slot
   short:
-    en: The authoritative copy of your data — always the JSON payload, never the indexed slots.
-    id: Salinan otoritatif data Anda — selalu payload JSON, tidak pernah slot yang terindeks.
+    en: The authoritative copy of your data, which is always the JSON payload and never the indexed slots.
+    id: Salinan otoritatif data Anda, yaitu selalu payload JSON dan tidak pernah slot yang terindeks.
   body:
     en: "The authoritative copy of your data: in StarDust, always the JSON [[payload|payload]] in `entry_data`, never the indexed [[slot|slots]]. The slots are a queryable mirror that the engine is free to rebuild, null out, or relocate at any time. This ordering is what makes every other guarantee here safe: a coercion that fails, a backfill that has not run, and a slot being reclaimed all affect what is *queryable*, never what is *stored*."
     id: "Salinan otoritatif dari data Anda: di StarDust, selalu berupa [[payload|payload]] JSON di `entry_data`, tidak pernah [[slot|slot]] terindeks. Slot adalah cermin yang bisa di-query, yang bebas dibangun ulang, dikosongkan, atau dipindahkan engine kapan saja. Urutan inilah yang membuat setiap jaminan lain di sini aman: koersi yang gagal, backfill yang belum berjalan, dan slot yang sedang direklamasi semuanya hanya memengaruhi apa yang *bisa di-query*, tidak pernah apa yang *tersimpan*."
