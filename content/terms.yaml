@@ -323,10 +323,10 @@
     - pre-flight-rejection
   short:
     en: The JSON wire format for filters, so a filter can travel from a browser or an API client and be validated before it reaches your database.
-    id: Format wire JSON untuk filter, supaya sebuah filter bisa dikirim dari browser atau klien API dan divalidasi sebelum mencapai database Anda.
+    id: Wire format JSON untuk filter, supaya sebuah filter bisa dikirim dari browser atau klien API dan divalidasi sebelum mencapai database Anda.
   body:
     en: "The JSON wire format for filters, so a filter can travel from a browser or an API client and be validated before it reaches your database. Decoding is strict and failures are precise: each rejection carries a machine-readable error code, a pointer to the exact offending node in your JSON, and the specifics of the mismatch, enough to render a useful HTTP 400 without writing a handler per failure mode."
-    id: "Format wire JSON untuk filter, sehingga sebuah filter bisa dikirim dari browser atau klien API dan divalidasi sebelum mencapai database Anda. Decoding-nya ketat dan kegagalannya presisi: setiap penolakan membawa kode error yang bisa dibaca mesin, penunjuk ke node yang bermasalah di JSON Anda, dan rincian ketidakcocokannya, cukup untuk membuat HTTP 400 yang berguna tanpa menulis handler untuk tiap jenis kegagalan."
+    id: "Wire format JSON untuk filter, sehingga sebuah filter bisa dikirim dari browser atau klien API dan divalidasi sebelum mencapai database Anda. Decoding-nya ketat dan kegagalannya presisi: setiap penolakan membawa kode error yang bisa dibaca mesin, penunjuk ke node yang bermasalah di JSON Anda, dan rincian ketidakcocokannya, cukup untuk membuat HTTP 400 yang berguna tanpa menulis handler untuk tiap jenis kegagalan."
 - slug: reconciler
   term: Reconciler
   seeAlso:
